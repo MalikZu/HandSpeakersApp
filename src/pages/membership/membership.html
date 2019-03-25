@@ -1,0 +1,253 @@
+<ion-content>
+  <button ion-button icon-only class="btn-back" (click)="back()">
+    <ion-icon name="md-arrow-back"></ion-icon>
+  </button>
+  <img class="top-bg" src="../assets/imgs/10.jpg" />
+  <div class="top-bar">
+    <p>Membership</p>
+    <img src="../assets/imgs/membership.png" />
+  </div>
+
+  <ion-card [style.display]="showMembershipForm">
+    <ion-card>
+      <ion-card-content class="basic-access">
+        <ion-card-title text-uppercase text-center>
+          Become a Hand Speaker
+        </ion-card-title>
+        <!-- <ion-row>
+        <ion-col border-right>
+          <p text-center>12
+            <br> Instructors</p>
+        </ion-col>
+        <ion-col>
+          <p text-center>24
+            <br> Lessons</p>
+        </ion-col>
+      </ion-row>
+      <h2 text-center class="card-footer">100% Free</h2> -->
+        <button ion-button block color="dark" (click)="JoinAsSpeaker()" margin-top>Join</button>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content class="full-access">
+        <ion-card-title text-uppercase text-center>
+          Become A Member
+        </ion-card-title>
+        <!-- <ion-row>
+        <ion-col border-right>
+          <p text-center>45
+            <br> Instructors</p>
+        </ion-col>
+        <ion-col>
+          <p text-center>10000
+            <br> Lessons</p>
+        </ion-col>
+      </ion-row>
+      <h2 text-center class="card-footer">100% Free</h2> -->
+        <button ion-button block color="secondary" (click)="JoinAsMember()" margin-top>Join</button>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content class="basic-access">
+        <ion-card-title text-uppercase text-center>
+          Become A Sponsor
+        </ion-card-title>
+        <!-- <ion-row>
+          <ion-col border-right>
+            <p text-center>45
+              <br> Instructors</p>
+          </ion-col>
+          <ion-col>
+            <p text-center>10000
+              <br> Lessons</p>
+          </ion-col>
+        </ion-row>
+        <h2 text-center class="card-footer">100% Free</h2> -->
+        <button ion-button block color="dark" (click)="JoinAsSponsor()" margin-top>Join</button>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-card>
+  <!-- speaker card -->
+  <ion-card [style.display]="showSpeaker">
+
+    <ion-card-title text-uppercase text-center>
+      Speaker
+    </ion-card-title>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label color="primary" floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="formSpeaker.name" required ></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label color="primary" floating>Telephone Number</ion-label>
+          <ion-input type="number" [(ngModel)]="formSpeaker.phone" ></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label color="primary" floating>Email</ion-label>
+          <ion-input type="email" [(ngModel)]="formSpeaker.email" ></ion-input>
+        </ion-item>
+    </ion-card-content>
+    <ion-item>
+        <button ion-button color="danger" style="margin-left: 20px" (click)="submitSpeakerForm()">Submit</button>
+      </ion-item>
+
+  </ion-card>
+
+  <!-- member card -->
+  <ion-card [style.display]="showMember">
+    <ion-card-title text-uppercase text-center>
+      Member
+    </ion-card-title>
+
+    <ion-card-content>
+
+        <ion-item>
+        <ion-label color="primary" floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="formMember.name" required ></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label color="primary" floating>Telephone Number</ion-label>
+          <ion-input type="number" [(ngModel)]="formMember.phone" ></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label color="primary" floating>Email</ion-label>
+          <ion-input type="email" [(ngModel)]="formMember.email" ></ion-input>
+        </ion-item>
+  
+        
+  
+      </ion-card-content>
+  
+     <ion-card-content>
+          <ion-card-header> How do you prefer to member us:</ion-card-header> 
+  
+          <ion-item>
+            <ion-label>Volunteer</ion-label>
+            <ion-checkbox color="blue" [(ngModel)]="formMember.volunteer" ></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Provide prizes </ion-label>
+            <ion-checkbox color="blue" [(ngModel)]="formMember.prizes"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Photographer</ion-label>
+            <ion-checkbox color="blue" [(ngModel)]="formMember.photographer"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>Videographer</ion-label>
+            <ion-checkbox color="blue" [(ngModel)]="formMember.videographer"></ion-checkbox>
+          </ion-item>
+          <ion-item>
+              <ion-label>Interpreter</ion-label>
+              <ion-checkbox color="blue" [(ngModel)]="formMember.interpreter"></ion-checkbox>
+            </ion-item>
+          <ion-item>
+            <ion-label>Others</ion-label>
+            <ion-checkbox color="blue"   [(ngModel)]="formMember.other" (ionChange)="eventMemberOtherField()" ></ion-checkbox>
+          </ion-item>
+  
+          <ion-item  [style.display]="showMemberOtherField">
+              <ion-label stacked>Explain Here</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+  
+        </ion-card-content>
+
+        <ion-item>
+            <button ion-button color="danger" style="margin-left: 20px" (click)="submitMemberForm()">Submit</button>
+         
+            
+          </ion-item>
+  </ion-card>
+
+  <!-- sponsor card -->
+  <ion-card [style.display]="showSponsor">
+
+    <ion-card-title text-uppercase text-center>
+      Sponsor
+    </ion-card-title>
+    <ion-card-content>
+        <ion-list radio-group [(ngModel)]="formSponsor.type">        
+            <ion-item>
+                <ion-label>Company</ion-label>
+                <ion-radio value="Company"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+                <ion-label>Individual</ion-label>
+                <ion-radio value="Individual" ></ion-radio>
+            </ion-item>
+        </ion-list>
+    </ion-card-content>
+
+
+    <ion-card-content>
+
+      <ion-item>
+      <ion-label color="primary" floating>Name</ion-label>
+      <ion-input  [(ngModel)]="formSponsor.name"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label color="primary" floating>Telephone Number</ion-label>
+        <ion-input type='number'  [(ngModel)]="formSponsor.phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>Email</ion-label>
+        <ion-input  [(ngModel)]="formSponsor.email"></ion-input>
+      </ion-item>
+
+      
+
+    </ion-card-content>
+
+   <ion-card-content>
+        <ion-card-header> How do you prefer to sponsor us:</ion-card-header> 
+
+        <ion-item>
+          <ion-label>Daenerys Targaryen</ion-label>
+          <ion-checkbox color="blue"  [(ngModel)]="formSponsor.targaryen"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Provide prizes </ion-label>
+          <ion-checkbox color="blue"  [(ngModel)]="formSponsor.prizez"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Provide venue</ion-label>
+          <ion-checkbox color="blue"  [(ngModel)]="formSponsor.venue"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Money</ion-label>
+          <ion-checkbox color="blue"  [(ngModel)]="formSponsor.money"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Others</ion-label>
+          <ion-checkbox color="blue"  [(ngModel)]="formSponsor.other" (ionChange)="eventSponsorOtherField()" ></ion-checkbox>
+        </ion-item>
+
+        <ion-item  [style.display]="showSponsorOtherField">
+            <ion-label stacked>Explain Here</ion-label>
+            <ion-input type="text" [(ngModel)]="formSponsor.explain"></ion-input>
+          </ion-item>
+
+      </ion-card-content> 
+
+      <ion-item>
+          <button ion-button color="danger" style="margin-left: 20px" (click)="submitSponsorForm()">Submit</button>
+       
+          
+        </ion-item>
+
+
+
+  </ion-card>
+
+
+</ion-content>

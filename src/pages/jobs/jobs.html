@@ -1,0 +1,95 @@
+<ion-content>
+  <button ion-button icon-only class="btn-back" (click)="back()">
+    <ion-icon name="md-arrow-back"></ion-icon>
+  </button>
+  <img class="top-bg" src="../assets/imgs/HE0B1839.JPG" />
+  <div class="top-bar">
+    <p>Jobs & Competitions</p>
+    <img src="../assets/imgs/certificate.png" />
+  </div>
+  <ion-list no-lines *ngIf="jobsList!==undefined" [style.display]="showJobList">
+    <ion-item *ngFor="let jobs of jobsList" (click)="onJobClicked(jobs)">
+      <ion-avatar item-start>
+        <img src="../assets/imgs/membership.png">
+      </ion-avatar>
+      <h2>{{jobs.title}}</h2>
+      <p>{{jobs.department}}</p>
+      <p class="job-date">{{jobs.postedOn}}</p>
+      <p class="job-status" item-end>{{jobs.status}}</p>
+    </ion-item>
+  </ion-list>
+
+  <!-- show job detail -->
+  <ion-card *ngIf="jobDetails!==undefined" [style.display]="showJobDetail">
+    <ion-card-header>
+      {{jobDetails.title}}
+    </ion-card-header>
+    <ion-card>
+      <ion-card-header>
+        Job Description:
+      </ion-card-header>
+      <ion-card-content>
+        {{jobDetails.description}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list>
+      <ion-row ion-item>
+        <ion-icon name="compass" item-start></ion-icon>
+        {{jobDetails.school}}, {{jobDetails.location}}
+      </ion-row>
+      <ion-row ion-item>
+        <ion-icon name="document" item-start></ion-icon>
+        {{jobDetails.experience}}
+      </ion-row>
+      <ion-row ion-item>
+        <ion-icon name="school" item-start></ion-icon>
+        {{jobDetails.education}}
+      </ion-row>
+      <ion-row ion-item>
+        <ion-icon name="ios-cash" item-start></ion-icon>
+        {{jobDetails.pay}}
+      </ion-row>
+    </ion-list>
+    <ion-item>
+      <button ion-button color="primary" (click)="applyForJob(jobDetails)">Apply</button>
+    </ion-item>
+
+  </ion-card>
+
+  <!-- uplaod detail and cv for job -->
+  <ion-card [style.display]="showDetailandCv">
+    <ion-card-header>
+      Fill your Detail:
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label color="primary" floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="formJob.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="formJob.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Phone Number</ion-label>
+        <ion-input type="number" [(ngModel)]="formJob.phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button color="primary" (click)="submitApplication(formJob)">Apply Now</button>  
+      </ion-item>
+    </ion-card-content>
+    <ion-card-content *ngIf="appliedJob!==undefined">
+      <ion-item>
+        Contact us: <br/> {{appliedJob.school}},<br /> {{appliedJob.location}} <br/>  {{appliedJob.phone}}
+
+      </ion-item>
+      <ion-item>
+        Email us: <br/>{{appliedJob.email}}
+      </ion-item>
+      <ion-item>
+        <a href=" http://ADProductions.com"> http://ADProductions.com</a>
+      </ion-item>
+      </ion-card-content>
+  </ion-card>
+</ion-content>

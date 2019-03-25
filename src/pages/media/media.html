@@ -1,0 +1,73 @@
+<ion-content>
+  <button ion-button icon-only class="btn-back" (click)="back()">
+    <ion-icon name="md-arrow-back"></ion-icon>
+  </button>
+  <img class="top-bg" src="../assets/imgs/HE0B2343.JPG" />
+  <div class="top-bar">
+    <p>Media</p>
+    <img src="../assets/imgs/media.png" />
+  </div>
+  <ion-card [style.display]="showmedia">
+    <ion-row>
+      <ion-col
+        *ngFor="let media of mediaList"
+        (click)="media_event(media.files)"
+      >
+        <img src="../../assets/imgs/{{ media.thumbnail }}" />
+        <ion-label class="media-label">{{ media.title }}</ion-label>
+        <!-- <div class="media-item" style="background-image: url('../assets/imgs/movie_2.jpg');"></div>
+          <div class="media-overlay"></div> -->
+      </ion-col>
+      <!-- <ion-col (click)="media_event()">
+
+        <img src="../../assets/imgs/numbers.jpg">
+        <ion-label class="media-label">Number</ion-label>
+
+      </ion-col> -->
+    </ion-row>
+
+    <!--
+    <ion-row>
+      <ion-col (click)="media_event()">
+
+        <img src="../../assets/imgs/alphabet.jpg">
+        <ion-label class="media-label">Sentence</ion-label>
+
+
+      </ion-col>
+      <ion-col (click)="media_event()">
+
+        <img src="../../assets/imgs/QA.png">
+        <ion-label class="media-label">Q and A</ion-label>
+
+      </ion-col>
+    </ion-row> -->
+  </ion-card>
+
+  <ion-card [style.display]="showVideos">
+    <ion-row>
+      <ion-col *ngFor="let file of files">
+        <div
+          class="media-item"
+          [ngStyle]="{ background: 'url(../assets/imgs/' + file.name + ')' }"
+        ></div>
+        <div class="media-overlay"></div>
+      </ion-col>
+      <!-- <ion-col>
+        <div class="media-item" style="background-image: url('../assets/imgs/movie_2.jpg');"></div>
+        <div class="media-overlay"></div>
+      </ion-col> -->
+    </ion-row>
+    <!-- <ion-row>
+        <ion-col>
+          <div class="media-item" style="background-image: url('../assets/imgs/movie_3.jpg');"></div>
+          <div class="media-overlay"></div>
+        </ion-col>
+        <ion-col>
+          <div class="media-item" style="background-image: url('../assets/imgs/movie_1.jpg');"></div>
+          <div class="media-overlay"></div>
+        </ion-col>
+
+      </ion-row> -->
+  </ion-card>
+</ion-content>

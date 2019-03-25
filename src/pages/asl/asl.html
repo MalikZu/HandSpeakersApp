@@ -1,0 +1,64 @@
+<ion-content>
+  <button ion-button icon-only class="btn-back" (click)="back()">
+    <ion-icon name="md-arrow-back"></ion-icon>
+  </button>
+  <img class="top-bg" src="../assets/imgs/Image-1.png" />
+  <div class="top-bar">
+    <p>ASL Centers</p>
+    <img src="../assets/imgs/school.png" />
+  </div>
+  <!-- (ionInput)="onInput($event)"
+  (ionCancel)="onCancel($event)" -->
+  <ion-searchbar
+  [(ngModel)]="myInput"
+  [showCancelButton]="shouldShowCancel"  >
+</ion-searchbar>
+
+<!-- ////////////////list of   emirateCenters -->
+  <ion-list   [style.display]="showEmirateCenters"  >
+    <ion-item  *ngFor="let emirate of emirates" (click)="EmirateCentersSelected(emirate)" >
+      <ion-row >
+      <ion-col   col-3>
+            <!-- <ion-icon  style="height:5px;width:5px" name="ios-send" item-end></ion-icon> -->
+            <img  style="height: 30px;width:30 px" src="../assets/imgs/school.png" />
+        </ion-col >
+        <ion-col  col-9  style="vertical-align: center;float: left">
+            <h2>{{emirate.emirate}}</h2>
+        </ion-col>      
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  <!-- ////////////////list of   Institutes  -->
+  <ion-list *ngIf="institutes!==undefined"  [style.display]="showInstitutes"  >
+      <ion-item  *ngFor="let institute of institutes.institute"  (click)="InstituesSelected(institute)" >
+        <ion-row >
+        <ion-col   col-3>
+              <!-- <ion-icon  style="height:5px;width:5px" name="ios-send" item-end></ion-icon> -->
+              <img  style="height: 30px;width:30 px" src="../assets/imgs/school.png" />
+          </ion-col >
+          <ion-col  col-9  style="vertical-align: center;float: left">
+              <h2>{{institute.name}}</h2>
+          </ion-col>      
+        </ion-row>
+      </ion-item>
+    </ion-list>
+
+
+    <ion-card *ngIf="institute!==undefined" [style.display]="showInstituteDetail">
+      <img src="../../assets/imgs/school.png" />
+        <ion-card-content>
+            {{institute.content}}
+        </ion-card-content>
+
+        <ion-card-content>
+            Contact details: {{institute.phone}}
+        </ion-card-content>
+        <ion-card-content>
+            Website link: <a>{{institute.website}}</a> 
+                       
+        </ion-card-content>
+        <ion-card-content>
+            Social media accounts: <a>{{institute.facebook}}</a>
+        </ion-card-content>
+      </ion-card>
+</ion-content>

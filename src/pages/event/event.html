@@ -1,0 +1,76 @@
+<ion-content>
+  <button ion-button icon-only class="btn-back" (click)="back()">
+    <ion-icon name="md-arrow-back"></ion-icon>
+  </button>
+  <img class="top-bg" src="../assets/imgs/Image-5.png" />
+  <div class="top-bar">
+    <p>Events</p>
+    <img src="../assets/imgs/calendar.png" />
+  </div>
+  <ion-list *ngIf="events !== undefined" [style.display]="showEventList">
+    <ion-item
+      *ngFor="let event of events; let i = index"
+      (click)="itemSelected(i)"
+    >
+      <ion-row style="width: 100%" class="date-div" item-start>
+        <h3 text-center>{{ event.title }}</h3>
+
+        <ion-row
+          style="background: beige;width: 100%"
+          [style.display]="i === selectedEvent ? 'block' : 'none'"
+          (click)="getEventDetail(event)"
+        >
+          <ion-col col-2>
+            {{ event.date }}
+          </ion-col>
+          <ion-col col-1 style="color:blue;font-weight: bold">
+            |
+          </ion-col>
+          <ion-col col-9>
+            {{ event.description }}
+          </ion-col>
+        </ion-row>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+
+  <ion-card
+    *ngIf="eventDetails !== undefined"
+    [style.display]="showEventDetail"
+    style="text-align: center;"
+  >
+    <ion-row>
+      <ion-col col-3>
+        <ion-icon name="time" style="font-size:50px"></ion-icon>
+      </ion-col>
+      <ion-col col-9>
+        <ion-label style="height: 100%;widows: 100%;text-align: center"
+          >{{ eventDetails.timeFrom }} - {{ eventDetails.timeTo }}</ion-label
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-3>
+        <ion-icon name="compass" style="font-size:50px"></ion-icon>
+      </ion-col>
+      <ion-col col-9>
+        <ion-label style="height: 100%;widows: 100%;text-align: center">
+          {{ eventDetails.venue }}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-3>
+        <ion-icon name="mail" style="font-size:50px"></ion-icon>
+      </ion-col>
+      <ion-col col-9>
+        <ion-label style="height: 50%;widows: 100%;text-align: center">
+          {{ eventDetails.pass }}
+        </ion-label>
+        <ion-label style="height: 50%;widows: 100%;text-align: center">
+          Register <a>{{ eventDetails.website }} </a>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

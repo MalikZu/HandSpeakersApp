@@ -1,0 +1,27 @@
+<ion-content>
+  <button ion-button icon-only class="btn-back" (click)="back()">
+    <ion-icon name="md-arrow-back"></ion-icon>
+  </button>
+  <img class="top-bg" src="../assets/imgs/Image-7.png" />
+  <div class="top-bar">
+    <p>News & Press</p>
+    <img src="../assets/imgs/news.png" />
+  </div>
+  <ion-row>
+    <ion-col *ngFor="let news of news">
+      <ion-card>
+        <a href="#" (click)="openNews(news)">
+          <img src="../assets/imgs/news_bg.png" />
+          <ion-card-content>
+            <ion-card-title>
+              {{ news.title }}
+            </ion-card-title>
+            <p>
+              {{ news.content }}
+            </p>
+          </ion-card-content>
+        </a>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

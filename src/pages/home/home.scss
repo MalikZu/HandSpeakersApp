@@ -1,0 +1,37 @@
+page-home {
+    .button-container {
+        margin-top: -3rem;
+        .border-top-left {
+            border-top-left-radius: 1.5em;
+        }
+        .border-top-right {
+            border-top-right-radius: 1.5em;
+        }
+    }
+    ion-col {
+        background: white;
+    }
+    .btn-icon {
+        height: 100px;
+        max-width: 100px;
+        border: none;
+        padding: 0 8px;
+        label {
+            white-space: pre-wrap;
+            color:#1a1a1a;
+            font-size: 1.2rem;
+            text-transform: capitalize;
+            font-weight: bold;
+            margin-top: 1rem !important;
+        }
+        .img-div {
+            max-height: 65px;
+            // height: 65px;
+            height: 65px;
+            overflow: hidden;
+            img {
+                height: 100%;
+            }
+        }
+    }
+}
